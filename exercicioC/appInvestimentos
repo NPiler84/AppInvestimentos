@@ -1,0 +1,67 @@
+Programa {
+	funcao inicio() {
+		cadeia investimentos[]={"CDB","Acoes","Fundos Imobiliarios","Stocks","Reits"}
+		inteiro percentual[5]
+		inteiro valoresAplicados[5]
+		inteiro percentualAtual[5]
+		inteiro diferenca[5]
+		inteiro somaPercentual=0
+		inteiro somaInvestimento=0
+		inteiro maiorNumero=0
+		cadeia discrepancia=""
+		
+		
+		escreva("-_-_-_-_-_Valores Percentuais-_-_-_-_-_\n")
+		
+		enquanto(somaPercentual !=100){
+		    
+		    para(inteiro posicao=0; posicao<5; posicao++){
+		        escreva("Qual a porcentagem que gostaria de investir em " + investimentos[posicao] +  " ?")
+		        leia(percentual[posicao])
+		        somaPercentual = somaPercentual + percentual[posicao]
+		    }
+		    
+		    se(somaPercentual != 100){
+		        escreva("A soma do percentual é diferente de 100%, corrija\n")
+		        somaPercentual = 0
+		    }
+		    
+		}
+		
+		escreva("-_-_-_-_-_Valores em Reais_-_-_-_-_\n")
+		
+		
+		para(inteiro posicao = 0; posicao < 5; posicao++){
+		    escreva("Qual o valor já investido em " + investimentos[posicao] + ": R$ ")
+		    leia(valoresAplicados[posicao])
+		    somaInvestimento = somaInvestimento + valoresAplicados[posicao]
+		}
+		
+		para(inteiro posicao = 0; posicao < 5; posicao++){
+		    percentualAtual[posicao] = (valoresAplicados[posicao] * 100) / somaInvestimento
+		    
+		}
+		    
+		    
+		    escreva("-_-_-_-_-_Valores_-_-_-_-_\n")
+		    
+		    para(inteiro posicao = 0; posicao < 5; posicao++){
+		        escreva("\nValor pretendido em " + investimentos[posicao] + ": " + percentual[posicao])
+		        escreva("\nValor atual investido em " + investimentos[posicao] + " é de: " + percentualAtual[posicao])
+		        
+		        se(percentual[posicao] > percentualAtual[posicao]){
+		            diferenca[posicao] = percentual[posicao] - percentualAtual[posicao]
+		        }
+		        senao{
+		            diferenca[posicao] = percentualAtual[posicao] - percentual[posicao]
+		        }
+		        
+		        se(diferenca[posicao] > maiorNumero){
+		            maiorNumero = diferenca[posicao]
+		            discrepancia = investimentos[posicao]
+		        }  
+		        
+		    }
+		    escreva(" A maior diferença está entre " + discrepancia + " com "+ maiorNumero + "%.")
+	}
+}
